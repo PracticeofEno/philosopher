@@ -20,7 +20,7 @@ void	detect_death(t_share *share)
 				tf = 1;
 			i++;
 		}
-		if (tf)
+		if (is_end(ret, share))
 			break ;
 	}
 }

@@ -82,7 +82,7 @@ int	execlu_exec(t_indivi *indivi, t_share *share)
 	else if (indivi->state == 5)
 		func_ptr = do_thinking;
 	func_ptr(indivi, share);
-	if (indivi->state == 0)
+	if (indivi->state == 0 || indivi->state == 9)
 	{
 		return (1);
 	}

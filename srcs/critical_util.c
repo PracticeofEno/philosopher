@@ -1,18 +1,19 @@
 #include "philo.h"
 
-int		is_die(t_indivi *indivi, t_share *share)
+int		is_end(int ret, t_share *share)
 {
-	pthread_mutex_lock(&share->die_mutex);
-	if (indivi->state == 0)
-	{
-		pthread_mutex_unlock(&share->die_mutex);
+	int	i;
+
+	i = 0;
+	if (ret)
 		return (1);
-	}
-	else
+	while (i < share->philo_count)
 	{
-		pthread_mutex_unlock(&share->die_mutex);
-		return (0);
+		if (share->p_arr[i]->state != 9)
+			return (0);
+		i++;
 	}
+	return (1);
 }
 
 void	set_fork(t_share *share, t_indivi *indivi, int fn, int state)

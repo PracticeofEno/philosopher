@@ -68,5 +68,5 @@ void		print_eat_time(int number, int eat_count, t_share *s);
 void		print_sleep(int number, t_share *share);
 void		print_think(int number, t_share *share);
 void		print_die(int number, t_share *share);
-int			is_die(t_indivi *indivi, t_share *share);
+int			is_end(int ret, t_share *share);
 #endif

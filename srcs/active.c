@@ -3,12 +3,13 @@
 void	get_first_fork(t_indivi *indivi, t_share *share)
 {
 	int	fork_number;
+	int ret;
 
 	if (check_dies(indivi, share) == 1)
 		return ;
 	fork_number = indivi->philo_number;
 	pthread_mutex_lock(&share->fork_mutex[fork_number]);
-	if (check_enable_eat(indivi, share))
+	if (check_enable_eat(indivi, share) == 1)
 	{
 		if (*(share->forks + fork_number) == 0)
 		{
@@ -55,6 +56,11 @@ void	do_eat(t_indivi *indivi, t_share *share)
 	pthread_mutex_unlock(&share->fork_mutex[fn]);
 	indivi->eat_count = indivi->eat_count + 1;
 	print_eat_time(indivi->philo_number, indivi->eat_count, share);
+	if (share->max_eat != 0 && share->max_eat == indivi->eat_count)
+	{
+		indivi->state = 9;
+		drop_fork(indivi, share);
+	}
 	indivi->last_eat_time = get_time();
 	update_min_count(share);
 	indivi->sleep_number = 1;

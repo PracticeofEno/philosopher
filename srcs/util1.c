@@ -68,7 +68,6 @@ int	check_enable_eat(t_indivi *indivi, t_share *share)
 		else
 		{
 			indivi->state = 0;
-			share->die = 1;
 			share->eat_full[indivi->philo_number] = 1;
 			return (0);
 		}
