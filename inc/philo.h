@@ -69,4 +69,5 @@ void		print_sleep(int number, t_share *share);
 void		print_think(int number, t_share *share);
 void		print_die(int number, t_share *share);
 int			is_end(int ret, t_share *share);
+void		free_share(t_share *share);
 #endif

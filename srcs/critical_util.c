@@ -32,3 +32,21 @@ void	set_fork(t_share *share, t_indivi *indivi, int fn, int state)
 	write(1, "'\n", 2);
 	pthread_mutex_unlock(&share->print_mutex);
 }
+
+void	free_share(t_share *share)
+{
+	int	i;
+
+	i = share->philo_count - 1;
+	pthread_mutex_destroy(&share->et_mutex);
+	pthread_mutex_destroy(&share->mc_mutex);
+	pthread_mutex_destroy(&share->die_mutex);
+	pthread_mutex_destroy(&share->print_mutex);
+	while (i > 0)
+	{
+		pthread_mutex_destroy(&share->fork_mutex[i]);
+		i--;
+	}
+	free(share->forks);
+	free(share->p_arr);
+}

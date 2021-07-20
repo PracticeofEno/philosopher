@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 		}
 		philosopher(&data);
 	}
-	free(data.forks);
+	free_share(&data);
 	usleep(1000 * 1000);
 	return (0);
 }
