@@ -70,6 +70,7 @@ int	execlu_exec(t_indivi *indivi, t_share *share)
 {
 	void	(*func_ptr)(t_indivi *, t_share *);
 
+	func_ptr = 0;
 	if (indivi->state == 1)
 		func_ptr = get_first_fork;
 	else if (indivi->state == 2)
