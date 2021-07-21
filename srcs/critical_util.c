@@ -50,3 +50,10 @@ void	free_share(t_share *share)
 	free(share->forks);
 	free(share->p_arr);
 }
+
+void	v_func(t_indivi *indivi, t_share *share)
+{
+	(void)indivi;
+	(void)share;
+	return ;
+}

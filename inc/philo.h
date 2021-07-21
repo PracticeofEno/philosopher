@@ -57,7 +57,6 @@ int			execlu_exec(t_indivi *indivi, t_share *share);
 long		get_time(void);
 long		get_time_s(struct timeval time);
 int			check_dies(t_indivi *indivi, t_share *share);
-int			try_catch_fork(t_indivi *indivi, t_share *share, int fork_number);
 void		drop_fork(t_indivi *indivi, t_share *share);
 int			divide_sleep(int goal_time, t_share *share, t_indivi *indivi);
 void		update_min_count(t_share *share);
@@ -70,4 +69,5 @@ void		print_think(int number, t_share *share);
 void		print_die(int number, t_share *share);
 int			is_end(int ret, t_share *share);
 void		free_share(t_share *share);
+void		v_func(t_indivi *indivi, t_share *share);
 #endif
