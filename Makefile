@@ -1,5 +1,5 @@
 NAME = philo
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 LIBFT = libft.a

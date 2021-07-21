@@ -3,7 +3,6 @@
 void	get_first_fork(t_indivi *indivi, t_share *share)
 {
 	int	fork_number;
-	int ret;
 
 	if (check_dies(indivi, share) == 1)
 		return ;
@@ -45,7 +44,6 @@ void	get_second_fork(t_indivi *indivi, t_share *share)
 
 void	do_eat(t_indivi *indivi, t_share *share)
 {
-	int	fork;
 	int	fn;
 
 	if (check_dies(indivi, share) == 1)
@@ -68,8 +66,6 @@ void	do_eat(t_indivi *indivi, t_share *share)
 
 void	do_sleep(t_indivi *indivi, t_share *share)
 {
-	int	fork;
-
 	if (check_dies(indivi, share) == 1)
 		return ;
 	print_sleep(indivi->philo_number, share);
@@ -78,8 +74,6 @@ void	do_sleep(t_indivi *indivi, t_share *share)
 
 void	do_thinking(t_indivi *indivi, t_share *share)
 {
-	int	fork;
-
 	if (check_dies(indivi, share) == 1)
 		return ;
 	print_think(indivi->philo_number, share);

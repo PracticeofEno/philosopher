@@ -4,11 +4,9 @@ void	detect_death(t_share *share)
 {
 	int	i;
 	int	ret;
-	int	tf;
 
 	i = 0;
 	ret = 0;
-	tf = 0;
 	usleep(100 * share->time_to_die * 0.8);
 	while (true)
 	{
@@ -16,8 +14,6 @@ void	detect_death(t_share *share)
 		while (i < share->philo_count)
 		{
 			ret = check_dies(share->p_arr[i], share);
-			if (ret)
-				tf = 1;
 			i++;
 		}
 		if (is_end(ret, share))
@@ -44,7 +40,6 @@ void	philosopher(t_share *share)
 	int				i;
 	pthread_t		thread_arr[200];
 	t_indivi		*indivi;
-	int				ret;
 
 	i = 0;
 	while (i < share->philo_count)

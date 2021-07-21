@@ -23,7 +23,6 @@ void	*philo_thread(void *thread_data)
 {
 	t_share		*share;
 	t_indivi	*indivi;
-	int			time;
 
 	indivi = (t_indivi *)thread_data;
 	share = indivi->share;

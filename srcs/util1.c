@@ -39,14 +39,6 @@ int	check_dies(t_indivi *indivi, t_share *share)
 	return (0);
 }
 
-int	try_catch_fork(t_indivi *indivi, t_share *share, int fork_number)
-{
-	if (*(share->forks + fork_number) == 0)
-		return (1);
-	else
-		return (0);
-}
-
 int	check_enable_eat(t_indivi *indivi, t_share *share)
 {
 	if (share->max_eat == 0)

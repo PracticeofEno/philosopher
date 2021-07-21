@@ -3,7 +3,6 @@
 int	divide_sleep(int goal_time, t_share *share, t_indivi *indivi)
 {
 	long	time;
-	long	time2;
 
 	time = get_time() + goal_time;
 	usleep(goal_time * 900);
