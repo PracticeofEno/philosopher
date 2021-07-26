@@ -36,8 +36,10 @@ void	set_fork(t_share *share, t_indivi *indivi, int fn, int state)
 void	free_share(t_share *share)
 {
 	int	i;
+	int j;
 
 	i = share->philo_count - 1;
+	j = share->philo_count - 1;
 	pthread_mutex_destroy(&share->et_mutex);
 	pthread_mutex_destroy(&share->mc_mutex);
 	pthread_mutex_destroy(&share->die_mutex);
@@ -46,6 +48,11 @@ void	free_share(t_share *share)
 	{
 		pthread_mutex_destroy(&share->fork_mutex[i]);
 		i--;
+	}
+	while (j > 0)
+	{
+		free(&share->p_arr[j]);
+		j--;
 	}
 	free(share->forks);
 	free(share->p_arr);
