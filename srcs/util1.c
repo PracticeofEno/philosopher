@@ -32,11 +32,6 @@ int	check_dies(t_indivi *indivi, t_share *share)
 		share->die = 1;
 		indivi->state = 0;
 		print_die(indivi->philo_number, share);
-		pthread_mutex_lock(&share->print_mutex);
-		write(1, "die time : ", 11);
-		ft_putnbr(time);
-		write(1, "\n", 1);
-		pthread_mutex_unlock(&share->print_mutex);
 		pthread_mutex_unlock(&share->die_mutex);
 		return (1);
 	}

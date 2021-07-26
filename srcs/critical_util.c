@@ -1,6 +1,6 @@
 #include "philo.h"
 
-int		is_end(int ret, t_share *share)
+int	is_end(int ret, t_share *share)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ void	set_fork(t_share *share, t_indivi *indivi, int fn, int state)
 void	free_share(t_share *share)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = share->philo_count - 1;
 	j = share->philo_count - 1;

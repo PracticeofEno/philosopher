@@ -2,7 +2,7 @@
 
 void	print_eat_time(int number, int eat_count, t_share *share)
 {
-	long time;
+	long	time;
 
 	pthread_mutex_lock(&share->print_mutex);
 	time = get_time() - share->time;
