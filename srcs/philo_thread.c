@@ -39,6 +39,5 @@ void	*philo_thread(void *thread_data)
 		if (execlu_exec(indivi, share) == 1)
 			break ;
 	}
-	free(indivi);
 	return (0);
 }
