@@ -25,16 +25,16 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	#$(MAKE) -C ./lib/libft
+	$(MAKE) -C ./lib/libft
 	$(CC) $(CFLAGS) -g -o $(NAME) main.c $(SRCS) $(LIBFT_FLAGS) -lpthread
 	
 clean :
-	#$(MAKE) clean -C ./lib/libft
+	$(MAKE) clean -C ./lib/libft
 	rm -rf $(SURP)
 	rm -f $(OBJS) $(C_OBJS)
 
 fclean :
-	#$(MAKE) fclean -C ./lib/libft
+	$(MAKE) fclean -C ./lib/libft
 	rm -f $(OBJS) $(C_OBJS) $(NAME)
 	
 re : fclean all
