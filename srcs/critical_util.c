@@ -51,7 +51,7 @@ void	free_share(t_share *share)
 	}
 	while (j > 0)
 	{
-		free(&share->p_arr[j]);
+		free(share->p_arr[j]);
 		j--;
 	}
 	free(share->forks);
