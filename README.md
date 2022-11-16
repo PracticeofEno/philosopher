@@ -76,7 +76,7 @@ int	divide_sleep(int goal_time, t_share *share, t_indivi *indivi)
 	usleep(goal_time * 900);
 	while (time > get_time())
 		usleep(share->philo_count * 2.3);
- ...
+        ...
 	return (0);
 }
 ```
