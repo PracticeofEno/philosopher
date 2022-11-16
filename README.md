@@ -1,4 +1,12 @@
 # philosopher
+```
+git clone ~
+make
+./philo 2 200 100 100 -> 순서대로 철학자 수, 죽는데 걸리는 시간, 먹는시간, 자는시간
+./philo 2 200 100 100 2 -> 2번씩 먹으면 종료하는 경우
+./philo 2 150 100 100 -> 무조건 죽을 수 밖에 없는 경우
+```
+
 ### 1. 개념 이미지
 ![2022-11-16 오후 2-43-15](https://user-images.githubusercontent.com/57505385/202093767-862491ee-947d-466c-a8be-426eb3a0cce2.png)
 ### 2. 과제 요구조건
@@ -52,13 +60,14 @@
 ![철학자 순서도](https://user-images.githubusercontent.com/57505385/202152719-3059e1fb-ada5-4788-b4da-673ba08cf0b1.png)
 
 ### 6. 기억에 남는 문제
-- thread를 쉬어주어야 할때, 쉬어야할 시간이 800ms라고 가정하면 800ms를 통째로 쉬어버리면 
+- thread를 쉬어주어야 할때, 쉬어야할 시간이 800ms라고 가정하면 800ms를 통째로 쉬어버리면 몇가지 문제점이 발생했었음
+- 1. sleep, eat 하면서 죽는경우, 탐지 불가
+- 2. CPU할당을 최소 800ms이후에 받기때문에 딜레이가 누적됨
 - example)
 ```
 usleep(800);
 ```
-- 누적오차가 쌓이는 문제
-- 해결 : 800ms를 쉬더라도 실제론 잘게 쪼개서 쉬게 변경
+-> 해결 : 800ms를 쉬더라도 실제론 잘게 쪼개서 쉬게 변경
 ```
 int	divide_sleep(int goal_time, t_share *share, t_indivi *indivi)
 {
@@ -71,3 +80,12 @@ int	divide_sleep(int goal_time, t_share *share, t_indivi *indivi)
 	return (0);
 }
 ```
+
+### 7. 실행 결과 
+- 출력을 명확히 알아보기 위해 철학자 수를 알아보기 쉽게 2개로 설정하였고 죽는경우, 2번씩 먹으면 종료하는 경우, 무한히 먹는 경우 세가지로 나누어 출력결과를 보았다  
+- 2번 먹고 종료하는 경우  
+![2번먹기](https://user-images.githubusercontent.com/57505385/202156600-a23fde2b-b976-4940-9b74-e2754a5985d8.png)
+- 무한히 먹기  
+![무한히](https://user-images.githubusercontent.com/57505385/202156744-e1d71887-55ba-4070-a447-2cd93be8b7e6.png)
+- 죽는 경우 (0번 철학자가 먼저 먹고 150ms에 1번 철학자가 수저를 받아 먹지만 생존시간 150ms를 초과해서 201ms에 죽었다고 표시가 뜸)  
+![죽는경우](https://user-images.githubusercontent.com/57505385/202156611-0e077ec7-139d-47d1-a328-43d60849309a.png)
