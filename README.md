@@ -67,6 +67,9 @@ make
 - thread를 쉬어주어야 할때, 쉬어야할 시간이 800ms라고 가정하면 800ms를 통째로 쉬어버리면 몇가지 문제점이 발생했었음
 - 1. sleep, eat 하면서 죽는경우, 탐지 불가
 - 2. CPU할당을 최소 800ms이후에 받기때문에 딜레이가 누적됨
+- 2-0. 800ms이후 runnable상태에서 CPU를 할당 받을때까지 걸리는 시간이 누적되서 오차가 발생함
+- 2-1. Thread 생명주기에 관한 개념은 다른분의 글을 링크하겠습니다 
+- 2-2. [https://shrtorznzl.tistory.com/11](https://codedragon.tistory.com/3526)
 - example)
 ```
 usleep(800);
