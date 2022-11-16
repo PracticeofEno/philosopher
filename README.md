@@ -1,7 +1,7 @@
 # philosopher
-## 개념 이미지
+### 1. 개념 이미지
 ![2022-11-16 오후 2-43-15](https://user-images.githubusercontent.com/57505385/202093767-862491ee-947d-466c-a8be-426eb3a0cce2.png)
-### 과제 요구조건
+### 2. 과제 요구조건
 | 필수 충족사항 | 
 | --- |
 | - 에러나면 0점 |
@@ -36,3 +36,38 @@
 2. time_to_die : 밀리초 단위. 마지막 식사시작이나 시뮬레이션이 시작된 후 time_to_die 까지 먹지 못하면 죽는다. 
 3. time_to_eat : 밀리초단위. 철학자가 식사하는데 걸리는 시간. 그 시간동안 두개의 포크 점유 
 4.  time_to_sleep : 밀리초단위. 철학자가 잠을 자는 시간 
+
+### 3. 공용 구조체와 개인 구조체
+- 공유하여 쓸 구조체변수 share와, 각각의 철학자 개인의 정보를 지닐 indivi구조체 모습
+![2022-11-16 오후 5-29-24](https://user-images.githubusercontent.com/57505385/202128345-98b800f0-32c2-4c2f-850e-aa0845d9eec9.png)
+
+### 4. 공통적으로 사용하여 잠그어줘야 할 요소
+1. 포크
+2. printf 출력부
+3. 해당 철학자가 죽었는지 살았는지 체크하는 부분
+4. 먹는 행동
+5. 가장 자원을 적게 할당받은 철학자의 시간
+
+### 5. 순서도  
+![철학자 순서도](https://user-images.githubusercontent.com/57505385/202152719-3059e1fb-ada5-4788-b4da-673ba08cf0b1.png)
+
+### 6. 기억에 남는 문제
+- thread를 쉬어주어야 할때, 쉬어야할 시간이 800ms라고 가정하면 800ms를 통째로 쉬어버리면 
+- example)
+```
+usleep(800);
+```
+- 누적오차가 쌓이는 문제
+- 해결 : 800ms를 쉬더라도 실제론 잘게 쪼개서 쉬게 변경
+```
+int	divide_sleep(int goal_time, t_share *share, t_indivi *indivi)
+{
+	long	time;
+	time = get_time() + goal_time;
+	usleep(goal_time * 900);
+	while (time > get_time())
+		usleep(share->philo_count * 2.3);
+ ...
+	return (0);
+}
+```
